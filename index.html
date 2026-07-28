@@ -21,7 +21,7 @@
             --gradient-2: #111827;
             --card-bg: rgba(30, 41, 59, 0.4);
             --header-bg: rgba(15, 23, 42, 0.6);
-            --anim-text-color: rgba(255, 255, 255, 0.03); /* பின்னணி அனிமேஷன் எழுத்தின் நிறம் */
+            --anim-text-color: rgba(255, 255, 255, 0.03);
         }
 
         [data-theme="ocean"] {
@@ -63,7 +63,7 @@
             overflow-x: hidden;
         }
 
-        /* 🏛️ பின்னணியில் நகரும் தமிழ்நாடு அரசு அனிமேஷன் எழுத்துக்கள் (Moving Background Text) */
+        /* 🏛️ பின்னணியில் நகரும் தமிழ்நாடு அரசு அனிமேஷன் எழுத்துக்கள் */
         .bg-text-animation {
             position: fixed;
             top: 40%;
@@ -87,7 +87,7 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* ✨ மின்னுவது போன்ற பின்னணி எஃபெக்ட் (Twinkling Glow Particles) */
+        /* ✨ மின்னுவது போன்ற பின்னணி எஃபெக்ட் */
         body::before {
             content: "";
             position: fixed;
@@ -161,7 +161,7 @@
 
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 
-        /* ⚡ கார்டுகளுக்கான புதிய 3D Hover & Glow Effects */
+        /* ⚡ கார்டுகளுக்கான 3D Hover & Glow Effects */
         .card {
             background-color: var(--card-bg);
             padding: 22px;
@@ -178,9 +178,9 @@
         }
 
         .card:hover {
-            transform: translateY(-6px) scale(1.02); /* லேசான Zoom மற்றும் மேலே எழும்பும் எஃபெக்ட் */
+            transform: translateY(-6px) scale(1.02);
             border-color: var(--accent-color);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(59, 130, 246, 0.3); /* ஒளிரும் தன்மை */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(59, 130, 246, 0.3);
             background-color: rgba(30, 41, 59, 0.8);
         }
 
@@ -198,7 +198,7 @@
         }
 
         .card:hover .icon-box {
-            transform: rotate(10deg) scale(1.1); /* மவுஸ் வைக்கும் போது ஐகான் சுழலும் */
+            transform: rotate(10deg) scale(1.1);
         }
 
         .card-info { display: flex; flex-direction: column; }
@@ -228,7 +228,16 @@
 
     <div class="section-title">🔑 முக்கிய லாகின் போர்ட்டல்கள்</div>
     <div class="grid">
-        <a href="https://tn.gov.in" target="_blank" class="card">
+        <!-- 🆕 புதிய TNRD அதிகாரப்பூர்வ இணையதள கார்டு -->
+        <a href="https://www.tnrd.tn.gov.in/" target="_blank" class="card">
+            <div class="icon-box">🌐</div>
+            <div class="card-info">
+                <h3>TNRD Official Site</h3>
+                <p>ஊரக வளர்ச்சி மற்றும் ஊராட்சித் துறை தளம்</p>
+            </div>
+        </a>
+
+        <a href="https://vptax.tnrd.tn.gov.in/" target="_blank" class="card">
             <div class="icon-box">🏡</div>
             <div class="card-info">
                 <h3>VP TAX Portal</h3>
