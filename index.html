@@ -15,8 +15,6 @@
             --text-muted: #f1f5f9;
             --border-glow: rgba(255, 255, 255, 0.35);
             --accent-color: #3b82f6;
-            
-            /* 🌌 முதலமைச்சர் படம் மிகத் தெளிவாகத் தெரிய கார்டுகளின் அடர்த்தி இன்னும் குறைக்கப்பட்டுள்ளது */
             --card-bg: rgba(15, 23, 42, 0.35);
             --header-bg: rgba(15, 23, 42, 0.55);
         }
@@ -49,7 +47,7 @@
             position: relative;
             overflow-x: hidden;
             
-            /* 📸 புதிய பிரகாசமான தமிழ்நாடு முதல்வர் புகைப்பட லிங்க் */
+            /* 📸 தமிழ்நாடு முதல்வர் புகைப்படப் பின்னணி */
             background-image: linear-gradient(rgba(15, 23, 42, 0.4), rgba(17, 24, 39, 0.45)), url('https://r2.dev');
             background-size: cover;
             background-position: center 15%;
@@ -66,7 +64,7 @@
             font-size: 1.15rem;
             font-weight: 700;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.35); /* எழுத்துக்களின் பிரகாசம் இன்னும் கூட்டப்பட்டுள்ளது */
+            color: rgba(255, 255, 255, 0.35);
             white-space: nowrap;
             pointer-events: none;
             z-index: 0;
@@ -126,7 +124,6 @@
 
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; }
 
-        /* ⚡ கார்டுகளுக்கான பிரகாசமான டிரான்ஸ்பரன்ட் கிளாஸ் எஃபெக்ட் */
         .card {
             background-color: var(--card-bg);
             padding: 24px;
@@ -185,25 +182,30 @@
     </div>
 
     <header>
-        <h1>கலசபாக்கம் வட்டாரம்</h1>
+        <h1>கலாசபாக்கம் வட்டாரம்</h1>
     </header>
 
     <div class="section-title">🔑 முக்கிய லாகின் போர்ட்டல்கள்</div>
     <div class="grid">
-        <a href="https://tn.gov.in" target="_blank" class="card">
+        <!-- 1. TNRD Official Website Link -->
+        <a href="https://www.tnrd.tn.gov.in" target="_blank" class="card">
             <div class="icon-box">🌐</div>
             <div class="card-info">
                 <h3>TNRD Official Site</h3>
                 <p>ஊரக வளர்ச்சி மற்றும் ஊராட்சித் துறை தளம்</p>
             </div>
         </a>
-        <a href="https://tn.gov.in" target="_blank" class="card">
+
+        <!-- 2. VP TAX Portal Link -->
+        <a href="https://vptax.tnrd.tn.gov.in" target="_blank" class="card">
             <div class="icon-box">🏡</div>
             <div class="card-info">
                 <h3>VP TAX Portal</h3>
                 <p>ஊராட்சி சொத்து வரி மற்றும் சேவைகள்</p>
             </div>
         </a>
+
+        <!-- 3. E-Gramswaraj Portal Link -->
         <a href="https://egramswaraj.gov.in" target="_blank" class="card">
             <div class="icon-box">🏛️</div>
             <div class="card-info">
@@ -211,11 +213,22 @@
                 <p>மத்திய அரசு கிராம கணக்கு போர்டல்</p>
             </div>
         </a>
-        <a href="https://indianbank.bank.in" target="_blank" class="card">
+
+        <!-- 4. Indian Bank TN PASS Login Link -->
+        <a href="https://tndrdpri.indianbank.in/login" target="_blank" class="card">
             <div class="icon-box">💳</div>
             <div class="card-info">
                 <h3>TN PASS Login</h3>
                 <p>Indian Bank TNDRD-PRI போர்டல்</p>
+            </div>
+        </a>
+
+        <!-- 5. Master Google Spreadsheet Link -->
+        <a href="https://google.com" target="_blank" class="card">
+            <div class="icon-box">📊</div>
+            <div class="card-info">
+                <h3>Kalasapakkam Block Sheets</h3>
+                <p>மாஸ்டர் ஸ்ப்ரெட்ஷீட் மற்றும் கணக்கு லிங்க்குகள்</p>
             </div>
         </a>
     </div>
