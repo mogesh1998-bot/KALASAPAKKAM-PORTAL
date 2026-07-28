@@ -16,7 +16,7 @@
             --border-glow: #334155;
             --accent-color: #3b82f6;
             
-            /* 🌌 அனிமேஷன் வண்ணங்கள் */
+            /* 🌌 அனிமேஷன் மற்றும் தீம் வண்ணங்கள் */
             --gradient-1: #060b19;
             --gradient-2: #111827;
             --card-bg: rgba(30, 41, 59, 0.4);
@@ -63,13 +63,13 @@
             overflow-x: hidden;
         }
 
-        /* 🏛️ பின்னணியில் நகரும் தமிழ்நாடு அரசு அனிமேஷன் எழுத்துக்கள் */
+        /* 🏛️ பின்னணியில் நகரும் தமிழ்நாடு அரசு அனிமேஷன் உரை */
         .bg-text-animation {
             position: fixed;
-            top: 40%;
+            top: 45%;
             left: 0;
             width: 100%;
-            font-size: 5.5rem;
+            font-size: 5rem;
             font-weight: 800;
             text-transform: uppercase;
             color: var(--anim-text-color);
@@ -77,8 +77,7 @@
             pointer-events: none;
             z-index: 0;
             user-select: none;
-            animation: textScroll 25s linear infinite;
-            font-family: 'Poppins', sans-serif;
+            animation: textScroll 30s linear infinite;
             letter-spacing: 2px;
         }
 
@@ -87,7 +86,7 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* ✨ மின்னுவது போன்ற பின்னணி எஃபெக்ட் */
+        /* ✨ மின்னுவது போன்ற நட்சத்திர பின்னணி */
         body::before {
             content: "";
             position: fixed;
@@ -153,7 +152,7 @@
             font-size: 1.25rem;
             font-weight: 600;
             color: var(--accent-color);
-            margin: 30px 0 20px 0;
+            margin: 35px 0 20px 0;
             padding-left: 12px;
             border-left: 4px solid var(--accent-color);
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
@@ -164,7 +163,7 @@
         /* ⚡ கார்டுகளுக்கான 3D Hover & Glow Effects */
         .card {
             background-color: var(--card-bg);
-            padding: 22px;
+            padding: 20px;
             border-radius: 12px;
             text-decoration: none;
             color: inherit;
@@ -185,31 +184,28 @@
         }
 
         .icon-box {
-            width: 48px;
-            height: 48px;
+            width: 46px;
+            height: 46px;
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             background-color: rgba(255, 255, 255, 0.06);
             flex-shrink: 0;
             transition: transform 0.3s ease;
         }
 
-        .card:hover .icon-box {
-            transform: rotate(10deg) scale(1.1);
-        }
-
+        .card:hover .icon-box { transform: rotate(10deg) scale(1.1); }
         .card-info { display: flex; flex-direction: column; }
-        .card h3 { margin: 0; font-size: 1.15rem; font-weight: 600; letter-spacing: 0.3px; }
-        .card p { margin: 5px 0 0 0; font-size: 0.88rem; color: var(--text-muted); line-height: 1.4; }
+        .card h3 { margin: 0; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.3px; line-height: 1.3; }
+        .card p { margin: 5px 0 0 0; font-size: 0.85rem; color: var(--text-muted); line-height: 1.3; }
         footer { text-align: center; margin-top: 60px; padding: 20px; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border-glow); }
     </style>
 </head>
 <body>
 
-<!-- 🏛️ பின்னணி அனிமேஷன் உரை (Background Text) -->
+<!-- 🏛️ பின்னணி அனிமேஷன் உரை -->
 <div class="bg-text-animation">
     Tamil Nadu Government Rural Development and Panchayat Raj &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tamil Nadu Government Rural Development and Panchayat Raj
 </div>
@@ -226,55 +222,53 @@
         <h1>கலசபாக்கம் வட்டாரம்</h1>
     </header>
 
-    <div class="section-title">🔑 முக்கிய லாகின் போர்ட்டல்கள்</div>
+    <!-- பிரிவு 1 -->
+    <div class="section-title">🔑 முக்கிய இணையதளங்கள் & லாகின்கள்</div>
     <div class="grid">
-        <!-- 🆕 புதிய TNRD அதிகாரப்பூர்வ இணையதள கார்டு -->
-        <a href="https://www.tnrd.tn.gov.in/" target="_blank" class="card">
+        <a href="https://tn.gov.in" target="_blank" class="card">
             <div class="icon-box">🌐</div>
             <div class="card-info">
-                <h3>TNRD Official Site</h3>
-                <p>ஊரக வளர்ச்சி மற்றும் ஊராட்சித் துறை தளம்</p>
+                <h3>TNRD Site</h3>
+                <p>அதிகாரப்பூர்வ துறை போர்டல்</p>
             </div>
         </a>
-
-        <a href="https://vptax.tnrd.tn.gov.in/" target="_blank" class="card">
+        <a href="https://tn.gov.in" target="_blank" class="card">
             <div class="icon-box">🏡</div>
             <div class="card-info">
                 <h3>VP TAX Portal</h3>
-                <p>ஊராட்சி சொத்து வரி மற்றும் சேவைகள்</p>
+                <p>சொத்து வரி மற்றும் சேவைகள்</p>
             </div>
         </a>
-
         <a href="https://egramswaraj.gov.in" target="_blank" class="card">
             <div class="icon-box">🏛️</div>
             <div class="card-info">
                 <h3>E-Gramswaraj</h3>
-                <p>மத்திய அரசு கிராம கணக்கு போர்டல்</p>
+                <p>மத்திய அரசு கிராம கணக்கு தளம்</p>
             </div>
         </a>
-
         <a href="https://indianbank.bank.in" target="_blank" class="card">
             <div class="icon-box">💳</div>
             <div class="card-info">
                 <h3>TN PASS Login</h3>
-                <p>Indian Bank TNDRD-PRI போர்டல்</p>
+                <p>Indian Bank TNDRD போர்டல்</p>
             </div>
         </a>
     </div>
 
-    <footer>
-        <p>© 2026 Kalasapakkam Block Portal | Designed for Quick Access</p>
-    </footer>
-</div>
-
-<script>
-    function setTheme(themeName) {
-        if(themeName === 'default') {
-            document.documentElement.removeAttribute('data-theme');
-        } else {
-            document.documentElement.setAttribute('data-theme', themeName);
-        }
-    }
-</script>
-</body>
-</html>
+    <!-- பிரிவு 2 -->
+    <div class="section-title">📊 கணக்குகள் & பாஸ்வேர்டு விபரங்கள் (Google Sheets)</div>
+    <div class="grid">
+        <a href="https://docs.google.com/spreadsheets/d/1AvgGkdtiS1tyyBJhX9MJOtdhOLWdpxZEwzosQW5hzt4/edit#gid=0" target="_blank" class="card">
+            <div class="icon-box">🔐</div>
+            <div class="card-info">
+                <h3>Master Sheet Dashboard</h3>
+                <p>அனைத்து 31 தாள்களின் முதன்மைப் பக்கம்</p>
+            </div>
+        </a>
+        <a href="https://google.com" target="_blank" class="card">
+            <div class="icon-box">📝</div>
+            <div class="card-info">
+                <h3>GST User & Pass</h3>
+                <p>Village Panchayat Accounts (Tab 1)</p>
+            </div>
+        </a>
