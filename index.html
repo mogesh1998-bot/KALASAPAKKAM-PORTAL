@@ -13,46 +13,42 @@
         :root {
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --border-glow: rgba(255, 255, 255, 0.1);
+            --border-glow: #334155;
             --accent-color: #3b82f6;
             
-            /* 🌌 அனிமேஷன் வண்ணங்கள் (Default Theme) */
-            --gradient-1: #0f172a;
-            --gradient-2: #1e3a8a;
-            --gradient-3: #020617;
+            /* 🌌 அனிமேஷன் வண்ணங்கள் */
+            --gradient-1: #060b19;
+            --gradient-2: #111827;
             --card-bg: rgba(30, 41, 59, 0.4);
-            --header-bg: rgba(15, 23, 42, 0.5);
-            --particle-color: rgba(255, 255, 255, 0.3);
+            --header-bg: rgba(15, 23, 42, 0.6);
+            --anim-text-color: rgba(255, 255, 255, 0.03); /* பின்னணி அனிமேஷன் எழுத்தின் நிறம் */
         }
 
         [data-theme="ocean"] {
             --accent-color: #64ffda;
-            --gradient-1: #0a192f;
-            --gradient-2: #172a45;
-            --gradient-3: #020c1b;
+            --gradient-1: #020c1b;
+            --gradient-2: #0a192f;
             --card-bg: rgba(23, 42, 69, 0.4);
-            --header-bg: rgba(2, 12, 27, 0.5);
-            --particle-color: rgba(100, 255, 218, 0.3);
+            --header-bg: rgba(2, 12, 27, 0.6);
+            --anim-text-color: rgba(100, 255, 218, 0.03);
         }
 
         [data-theme="cyber"] {
             --accent-color: #00f5ff;
-            --gradient-1: #120136;
-            --gradient-2: #400082;
-            --gradient-3: #03001e;
+            --gradient-1: #0b001a;
+            --gradient-2: #120136;
             --card-bg: rgba(3, 0, 30, 0.4);
-            --header-bg: rgba(18, 1, 54, 0.5);
-            --particle-color: rgba(0, 245, 255, 0.3);
+            --header-bg: rgba(18, 1, 54, 0.6);
+            --anim-text-color: rgba(0, 245, 255, 0.03);
         }
 
         [data-theme="solar"] {
             --accent-color: #f59e0b;
-            --gradient-1: #1c1c1c;
-            --gradient-2: #451a03;
-            --gradient-3: #171717;
+            --gradient-1: #141414;
+            --gradient-2: #1c1c1c;
             --card-bg: rgba(45, 45, 45, 0.4);
-            --header-bg: rgba(28, 28, 28, 0.5);
-            --particle-color: rgba(245, 158, 11, 0.3);
+            --header-bg: rgba(28, 28, 28, 0.6);
+            --anim-text-color: rgba(245, 158, 11, 0.03);
         }
 
         body {
@@ -62,48 +58,51 @@
             padding: 20px;
             transition: all 0.3s ease;
             min-height: 100vh;
+            background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
             position: relative;
             overflow-x: hidden;
-            
-            /* ✨ 1. வண்ண அலைகள் நகரும் அனிமேஷன் */
-            background: linear-gradient(-45deg, var(--gradient-1), var(--gradient-2), var(--gradient-3));
-            background-size: 400% 400%;
-            animation: gradientMove 15s ease infinite;
         }
 
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* 🏛️ பின்னணியில் நகரும் தமிழ்நாடு அரசு அனிமேஷன் எழுத்துக்கள் (Moving Background Text) */
+        .bg-text-animation {
+            position: fixed;
+            top: 40%;
+            left: 0;
+            width: 100%;
+            font-size: 5.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--anim-text-color);
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 0;
+            user-select: none;
+            animation: textScroll 25s linear infinite;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 2px;
         }
 
-        /* 🌌 2. பின்னணியில் மிதக்கும் ஒளிரும் துகள்கள் (Star Particles Effect) */
-        .background-particles {
+        @keyframes textScroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* ✨ மின்னுவது போன்ற பின்னணி எஃபெக்ட் (Twinkling Glow Particles) */
+        body::before {
+            content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(#fff 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.05;
             z-index: 0;
             pointer-events: none;
-        }
-        
-        .particle {
-            position: absolute;
-            background-color: var(--particle-color);
-            border-radius: 50%;
-            animation: floatParticles 8s infinite linear;
-            box-shadow: 0 0 10px var(--particle-color);
+            animation: twinkle 4s infinite alternate;
         }
 
-        /* துகள்கள் வெவ்வேறு அளவுகளில் ஒளிரும் குறியீடு */
-        .p1 { width: 3px; height: 3px; left: 10%; top: 20%; animation-duration: 6s; }
-        .p2 { width: 5px; height: 5px; left: 30%; top: 70%; animation-duration: 9s; animation-delay: 1s; }
-        .p3 { width: 2px; height: 2px; left: 75%; top: 15%; animation-duration: 5s; animation-delay: 2s; }
-        .p4 { width: 4px; height: 4px; left: 85%; top: 60%; animation-duration: 8s; animation-delay: 3s; }
-        .p5 { width: 3px; height: 3px; left: 50%; top: 40%; animation-duration: 7s; animation-delay: 4s; }
-
-        @keyframes floatParticles {
-            0% { transform: translateY(0) scale(1); opacity: 0; }
-            50% { opacity: 0.8; }
-            100% { transform: translateY(-100px) scale(0.5); opacity: 0; }
+        @keyframes twinkle {
+            0% { opacity: 0.03; }
+            100% { opacity: 0.08; }
         }
 
         .container { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
@@ -126,14 +125,14 @@
             font-size: 0.85rem;
             font-family: inherit;
             transition: all 0.2s;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .theme-btn:hover {
             border-color: var(--accent-color);
             transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(255,255,255,0.1);
+            box-shadow: 0 0 10px var(--accent-color);
         }
 
         header {
@@ -141,38 +140,32 @@
             padding: 35px 20px;
             background: var(--header-bg);
             border-radius: 12px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             border: 1px solid var(--border-glow);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            animation: fadeInDown 0.8s ease-out;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        header h1 { margin: 0; font-size: 2.2rem; font-weight: 700; color: #ffffff; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        header h1 { margin: 0; font-size: 2.3rem; font-weight: 700; color: #ffffff; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
         .section-title {
             font-size: 1.25rem;
             font-weight: 600;
             color: var(--accent-color);
-            margin: 30px 0 15px 0;
+            margin: 30px 0 20px 0;
             padding-left: 12px;
             border-left: 4px solid var(--accent-color);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 
-        /* 💎 3. கார்டுகளுக்கான புதிய 3D கிளாஸ்மார்பிசம் எஃபெக்ட் (Glassmorphism & Hover Effect) */
+        /* ⚡ கார்டுகளுக்கான புதிய 3D Hover & Glow Effects */
         .card {
             background-color: var(--card-bg);
             padding: 22px;
-            border-radius: 14px;
+            border-radius: 12px;
             text-decoration: none;
             color: inherit;
             border: 1px solid var(--border-glow);
@@ -180,53 +173,45 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
-        /* மவுஸ் அல்லது தொடுதிரை எஃபெக்ட் (Hover Lift & Glow) */
         .card:hover {
-            transform: translateY(-6px) scale(1.02);
+            transform: translateY(-6px) scale(1.02); /* லேசான Zoom மற்றும் மேலே எழும்பும் எஃபெக்ட் */
             border-color: var(--accent-color);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 15px var(--accent-color);
-            background-color: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(59, 130, 246, 0.3); /* ஒளிரும் தன்மை */
+            background-color: rgba(30, 41, 59, 0.8);
         }
 
         .icon-box {
-            width: 45px;
-            height: 45px;
+            width: 48px;
+            height: 48px;
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.6rem;
             background-color: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255,255,255,0.05);
             flex-shrink: 0;
             transition: transform 0.3s ease;
         }
 
         .card:hover .icon-box {
-            transform: rotate(10deg) scale(1.1);
+            transform: rotate(10deg) scale(1.1); /* மவுஸ் வைக்கும் போது ஐகான் சுழலும் */
         }
 
         .card-info { display: flex; flex-direction: column; }
         .card h3 { margin: 0; font-size: 1.15rem; font-weight: 600; letter-spacing: 0.3px; }
-        .card p { margin: 5px 0 0 0; font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
-        
+        .card p { margin: 5px 0 0 0; font-size: 0.88rem; color: var(--text-muted); line-height: 1.4; }
         footer { text-align: center; margin-top: 60px; padding: 20px; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border-glow); }
     </style>
 </head>
 <body>
 
-<!-- பின்னணி நட்சத்திரங்கள் வடிவமைப்பு -->
-<div class="background-particles">
-    <div class="particle p1"></div>
-    <div class="particle p2"></div>
-    <div class="particle p3"></div>
-    <div class="particle p4"></div>
-    <div class="particle p5"></div>
+<!-- 🏛️ பின்னணி அனிமேஷன் உரை (Background Text) -->
+<div class="bg-text-animation">
+    Tamil Nadu Government Rural Development and Panchayat Raj &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tamil Nadu Government Rural Development and Panchayat Raj
 </div>
 
 <div class="container">
@@ -238,7 +223,7 @@
     </div>
 
     <header>
-        <h1>கலசபாக்கம் வட்டாரம்</h1>
+        <h1>கலாசபாக்கம் வட்டார போர்டல்</h1>
     </header>
 
     <div class="section-title">🔑 முக்கிய லாகின் போர்ட்டல்கள்</div>
@@ -273,3 +258,14 @@
     </footer>
 </div>
 
+<script>
+    function setTheme(themeName) {
+        if(themeName === 'default') {
+            document.documentElement.removeAttribute('data-theme');
+        } else {
+            document.documentElement.setAttribute('data-theme', themeName);
+        }
+    }
+</script>
+</body>
+</html>
