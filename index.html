@@ -5,16 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalasapakkam Block Portal</title>
     <style>
+        /* Default Dark Theme Variable */
         :root {
             --bg-dark: #0f172a;
             --card-bg: #1e293b;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-glow: #334155;
-            --accent-blue: #3b82f6;
-            --accent-green: #10b981;
-            --accent-purple: #8b5cf6;
-            --accent-amber: #f59e0b;
+            --accent-color: #3b82f6;
+            --header-bg: linear-gradient(135deg, #1e3a8a, #0f172a);
+        }
+
+        /* Ocean Breeze Theme */
+        [data-theme="ocean"] {
+            --bg-dark: #0a192f;
+            --card-bg: #172a45;
+            --text-main: #64ffda;
+            --text-muted: #8892b0;
+            --border-glow: #303c55;
+            --accent-color: #64ffda;
+            --header-bg: linear-gradient(135deg, #020c1b, #172a45);
+        }
+
+        /* Cyberpunk Theme */
+        [data-theme="cyber"] {
+            --bg-dark: #120136;
+            --card-bg: #03001e;
+            --text-main: #00f5ff;
+            --text-muted: #ff007f;
+            --border-glow: #ff007f;
+            --accent-color: #00f5ff;
+            --header-bg: linear-gradient(135deg, #ff007f, #120136);
+        }
+
+        /* Solar Eclipse Theme */
+        [data-theme="solar"] {
+            --bg-dark: #1c1c1c;
+            --card-bg: #2d2d2d;
+            --text-main: #f59e0b;
+            --text-muted: #a3a3a3;
+            --border-glow: #404040;
+            --accent-color: #f59e0b;
+            --header-bg: linear-gradient(135deg, #78350f, #1c1c1c);
         }
 
         body {
@@ -23,53 +55,58 @@
             color: var(--text-main);
             margin: 0;
             padding: 20px;
+            transition: all 0.3s ease;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        /* Theme Switcher Styles */
+        .theme-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .theme-btn {
+            padding: 8px 14px;
+            border: 1px solid var(--border-glow);
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .theme-btn:hover {
+            border-color: var(--accent-color);
+            transform: scale(1.05);
         }
 
         header {
             text-align: center;
             padding: 30px 20px;
-            background: linear-gradient(135deg, #1e3a8a, #0f172a);
+            background: var(--header-bg);
             border-radius: 12px;
             margin-bottom: 30px;
             border: 1px solid var(--border-glow);
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
-            letter-spacing: 1px;
-            color: #ffffff;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-
-        header p {
-            margin: 10px 0 0 0;
-            color: var(--text-muted);
-            font-size: 1rem;
-        }
+        header h1 { margin: 0; font-size: 2rem; color: #ffffff; }
+        header p { margin: 10px 0 0 0; color: var(--text-muted); font-size: 1rem; }
 
         .section-title {
             font-size: 1.2rem;
-            color: #60a5fa;
+            color: var(--accent-color);
             margin: 30px 0 15px 0;
             padding-left: 12px;
-            border-left: 4px solid var(--accent-blue);
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            border-left: 4px solid var(--accent-color);
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 16px;
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
 
         .card {
             background-color: var(--card-bg);
@@ -86,7 +123,7 @@
 
         .card:hover {
             transform: translateY(-3px);
-            border-color: var(--accent-blue);
+            border-color: var(--accent-color);
             box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
         }
 
@@ -98,71 +135,53 @@
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.1);
             flex-shrink: 0;
         }
 
-        .blue { background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; }
-        .green { background-color: rgba(16, 185, 129, 0.2); color: #34d399; }
-        .purple { background-color: rgba(139, 92, 246, 0.2); color: #a78bfa; }
-        .amber { background-color: rgba(245, 158, 11, 0.2); color: #fbbf24; }
-
-        .card-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card h3 {
-            margin: 0;
-            font-size: 1.05rem;
-            font-weight: 600;
-        }
-
-        .card p {
-            margin: 4px 0 0 0;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            padding: 20px;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            border-top: 1px solid var(--border-glow);
-        }
+        .card-info { display: flex; flex-direction: column; }
+        .card h3 { margin: 0; font-size: 1.05rem; font-weight: 600; }
+        .card p { margin: 4px 0 0 0; font-size: 0.85rem; color: var(--text-muted); }
+        footer { text-align: center; margin-top: 50px; padding: 20px; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border-glow); }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <!-- Theme Switcher Buttons -->
+    <div class="theme-switcher">
+        <button class="theme-btn" onclick="setTheme('default')">🌑 Dark Default</button>
+        <button class="theme-btn" onclick="setTheme('ocean')">🌊 Ocean Breeze</button>
+        <button class="theme-btn" onclick="setTheme('cyber')">👾 Cyberpunk</button>
+        <button class="theme-btn" onclick="setTheme('solar')">☀️ Solar Eclipse</button>
+    </div>
+
     <header>
-        <h1>கலாசபாக்கம் வட்டார போர்டல்</h1>
+        <h1 id="main-title">கலாசபாக்கம் வட்டார போர்டல்</h1>
         <p>Kalasapakkam Block - RDPR SNA Dashboard</p>
     </header>
 
     <!-- முக்கிய லாகின் போர்ட்டல்கள் -->
     <div class="section-title">🔑 முக்கிய லாகின் போர்ட்டல்கள்</div>
     <div class="grid">
-        <a href="https://vptax.tnrd.tn.gov.in/" target="_blank" class="card">
-            <div class="icon-box purple">🏡</div>
+        <a href="https://tn.gov.in" target="_blank" class="card">
+            <div class="icon-box">🏡</div>
             <div class="card-info">
                 <h3>VP TAX Portal</h3>
                 <p>ஊராட்சி சொத்து வரி மற்றும் சேவைகள்</p>
             </div>
         </a>
 
-        <a href="https://egramswaraj.gov.in/" target="_blank" class="card">
-            <div class="icon-box green">🏛️</div>
+        <a href="https://egramswaraj.gov.in" target="_blank" class="card">
+            <div class="icon-box">🏛️</div>
             <div class="card-info">
                 <h3>E-Gramswaraj</h3>
                 <p>மத்திய அரசு கிராம கணக்கு போர்டல்</p>
             </div>
         </a>
 
-        <a href="https://tndrdpri.indianbank.bank.in/login" target="_blank" class="card">
-            <div class="icon-box blue">💳</div>
+        <a href="https://indianbank.bank.in" target="_blank" class="card">
+            <div class="icon-box">💳</div>
             <div class="card-info">
                 <h3>TN PASS Login</h3>
                 <p>Indian Bank TNDRD-PRI போர்டல்</p>
@@ -173,40 +192,40 @@
     <!-- தரவு மற்றும் கணக்கெடுப்பு லிங்க்குகள் -->
     <div class="section-title">📊 ஸ்ப்ரெட்ஷீட் & கணக்கு விபரங்கள்</div>
     <div class="grid">
-        <a href="https://docs.google.com/spreadsheets/d/1AvgGkdtiS1tyyBJhX9MJOtdhOLWdpxZEwzosQW5hzt4/edit?gid=0#gid=0" target="_blank" class="card">
-            <div class="icon-box amber">🔐</div>
+        <a href="https://google.com" target="_blank" class="card">
+            <div class="icon-box">🔐</div>
             <div class="card-info">
                 <h3>Master Spread Sheet</h3>
                 <p>User Name, Password & All Links</p>
             </div>
         </a>
 
-        <a href="https://docs.google.com/spreadsheets/d/1AvgGkdtiS1tyyBJhX9MJOtdhOLWdpxZEwzosQW5hzt4/edit?gid=0#gid=0" target="_blank" class="card">
-            <div class="icon-box blue">💧</div>
+        <a href="https://google.com" target="_blank" class="card">
+            <div class="icon-box">💧</div>
             <div class="card-info">
                 <h3>குடிநீா் தட்டுப்பாடு விவரம்</h3>
                 <p>Water Supply & Habitation Status</p>
             </div>
         </a>
 
-        <a href="https://docs.google.com/spreadsheets/d/1AvgGkdtiS1tyyBJhX9MJOtdhOLWdpxZEwzosQW5hzt4/edit?gid=0#gid=0" target="_blank" class="card">
-            <div class="icon-box green">💡</div>
+        <a href="https://google.com" target="_blank" class="card">
+            <div class="icon-box">💡</div>
             <div class="card-info">
                 <h3>EB Connection & Dues</h3>
                 <p>TANGECO EB Dues & Street Lights</p>
             </div>
         </a>
 
-        <a href="https://docs.google.com/spreadsheets/d/1AvgGkdtiS1tyyBJhX9MJOtdhOLWdpxZEwzosQW5hzt4/edit?gid=0#gid=0" target="_blank" class="card">
-            <div class="icon-box purple">💰</div>
+        <a href="https://google.com" target="_blank" class="card">
+            <div class="icon-box">💰</div>
             <div class="card-info">
                 <h3>15th FC & Audit Fund</h3>
                 <p>Savings Amount & 7th SFC Details</p>
             </div>
         </a>
 
-        <a href="https://docs.google.com/spreadsheets/d/1AvgGkdtiS1tyyBJhX9MJOtdhOLWdpxZEwzosQW5hzt4/edit?gid=0#gid=0" target="_blank" class="card">
-            <div class="icon-box amber">👥</div>
+        <a href="https://google.com" target="_blank" class="card">
+            <div class="icon-box">👥</div>
             <div class="card-info">
                 <h3>Panchayat Secretaries</h3>
                 <p>OHT Operators & Staff Details</p>
@@ -219,5 +238,14 @@
     </footer>
 </div>
 
+<script>
+    function setTheme(themeName) {
+        if(themeName === 'default') {
+            document.documentElement.removeAttribute('data-theme');
+        } else {
+            document.documentElement.setAttribute('data-theme', themeName);
+        }
+    }
+</script>
 </body>
 </html>
