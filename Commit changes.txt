@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalasapakkam Block Portal</title>
+    <!-- கூகுள் ஃபான்ட்கள் இணைப்பு -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-glow: #334155;
+            --accent-color: #3b82f6;
+            --header-bg: linear-gradient(135deg, #1e3a8a, #0f172a);
+        }
+
+        body {
+            /* எழுத்து வடிவம் மேம்படுத்தப்பட்டுள்ளது */
+            font-family: 'Poppins', 'Noto Sans Tamil', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--header-bg);
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-glow);
+        }
+
+        header h1 { margin: 0; font-size: 2.2rem; font-weight: 700; color: #ffffff; }
+        header p { margin: 10px 0 0 0; color: var(--text-muted); font-size: 1rem; }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin: 30px 0 15px 0;
+            padding-left: 12px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid var(--border-glow);
+            transition: all 0.2s ease-in-out;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+        }
+
+        .icon-box {
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .card-info { display: flex; flex-direction: column; }
+        .card h3 { margin: 0; font-size: 1.1rem; font-weight: 600; }
+        .card p { margin: 4px 0 0 0; font-size: 0.85rem; color: var(--text-muted); }
+        footer { text-align: center; margin-top: 50px; padding: 20px; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border-glow); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <!-- இங்கே உங்களுக்கு தேவையான புதிய தலைப்பை மாற்றிக்கொள்ளலாம் -->
+        <h1>கலாசபாக்கம் வட்டார போர்டல்</h1>
+        <p>Kalasapakkam Block - Dashboard</p>
+    </header>
+
+    <div class="section-title">🔑 முக்கிய லாகின் போர்ட்டல்கள்</div>
+    <div class="grid">
+        <a href="https://tn.gov.in" target="_blank" class="card">
+            <div class="icon-box">🏡</div>
+            <div class="card-info">
+                <h3>VP TAX Portal</h3>
+                <p>ஊராட்சி சொத்து வரி மற்றும் சேவைகள்</p>
+            </div>
+        </a>
+
+        <a href="https://egramswaraj.gov.in" target="_blank" class="card">
+            <div class="icon-box">🏛️</div>
+            <div class="card-info">
+                <h3>E-Gramswaraj</h3>
+                <p>மத்திய அரசு கிராம கணக்கு போர்டல்</p>
+            </div>
+        </a>
+
+        <a href="https://indianbank.bank.in" target="_blank" class="card">
+            <div class="icon-box">💳</div>
+            <div class="card-info">
+                <h3>TN PASS Login</h3>
+                <p>Indian Bank TNDRD-PRI போர்டல்</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="section-title">📊 ஸ்ப்ரெட்ஷீட் & கணக்கு விபரங்கள்</div>
+    <div class="grid">
+        <a href="https://google.com" target="_blank" class="card">
+            <div class="icon-box">🔐</div>
+            <div class="card-info">
+                <h3>Master Spread Sheet</h3>
+                <p>User Name, Password & All Links</p>
+            </div>
+        </a>
+
+        <a href="https://google.com" target="_blank" class="card">
+            <div class="icon-box">💧</div>
+            <div class="card-info">
+                <h3>குடிநீா் தட்டுப்பாடு விவரம்</h3>
+                <p>Water Supply & Habitation Status</p>
+            </div>
+        </a>
+
+        <a href="https://google.com" target="_blank" class="card">
+            <div class="icon-box">💡</div>
+            <div class="card-info">
+                <h3>EB Connection & Dues</h3>
+                <p>TANGECO EB Dues & Street Lights</p>
+            </div>
+        </a>
+    </div>
+
+    <footer>
+        <p>© 2026 Kalasapakkam Block Portal</p>
+    </footer>
+</div>
+
+</body>
+</html>
