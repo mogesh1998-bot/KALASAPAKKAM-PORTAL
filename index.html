@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalasapakkam Block Portal</title>
-    <!-- கூகுள் ஃபான்ட்கள் இணைப்பு -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -12,43 +11,29 @@
     <style>
         :root {
             --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-glow: #334155;
+            --text-muted: #cbd5e1;
+            --border-glow: rgba(255, 255, 255, 0.15);
             --accent-color: #3b82f6;
-            
-            /* 🌌 அனிமேஷன் மற்றும் தீம் வண்ணங்கள் */
-            --gradient-1: #060b19;
-            --gradient-2: #111827;
-            --card-bg: rgba(30, 41, 59, 0.4);
-            --header-bg: rgba(15, 23, 42, 0.6);
-            --anim-text-color: rgba(255, 255, 255, 0.03);
+            --card-bg: rgba(15, 23, 42, 0.65);
+            --header-bg: rgba(15, 23, 42, 0.75);
         }
 
         [data-theme="ocean"] {
             --accent-color: #64ffda;
-            --gradient-1: #020c1b;
-            --gradient-2: #0a192f;
-            --card-bg: rgba(23, 42, 69, 0.4);
-            --header-bg: rgba(2, 12, 27, 0.6);
-            --anim-text-color: rgba(100, 255, 218, 0.03);
+            --card-bg: rgba(10, 25, 47, 0.65);
+            --header-bg: rgba(2, 12, 27, 0.75);
         }
 
         [data-theme="cyber"] {
             --accent-color: #00f5ff;
-            --gradient-1: #0b001a;
-            --gradient-2: #120136;
-            --card-bg: rgba(3, 0, 30, 0.4);
-            --header-bg: rgba(18, 1, 54, 0.6);
-            --anim-text-color: rgba(0, 245, 255, 0.03);
+            --card-bg: rgba(3, 0, 30, 0.65);
+            --header-bg: rgba(18, 1, 54, 0.75);
         }
 
         [data-theme="solar"] {
             --accent-color: #f59e0b;
-            --gradient-1: #141414;
-            --gradient-2: #1c1c1c;
-            --card-bg: rgba(45, 45, 45, 0.4);
-            --header-bg: rgba(28, 28, 28, 0.6);
-            --anim-text-color: rgba(245, 158, 11, 0.03);
+            --card-bg: rgba(45, 45, 45, 0.65);
+            --header-bg: rgba(28, 28, 28, 0.75);
         }
 
         body {
@@ -58,27 +43,37 @@
             padding: 20px;
             transition: all 0.3s ease;
             min-height: 100vh;
-            background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
             position: relative;
             overflow-x: hidden;
+            
+            /* 📸 பின்னணியில் தமிழ்நாடு முதல்வர் புகைப்படம் மற்றும் அனிமேஷன் எஃபெக்ட் */
+            background-image: linear-gradient(rgba(6, 11, 25, 0.82), rgba(17, 24, 39, 0.85)), url('https://wikimedia.org');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            animation: bgPulse 20s infinite alternate ease-in-out;
         }
 
-        /* 🏛️ பின்னணியில் நகரும் தமிழ்நாடு அரசு அனிமேஷன் உரை */
+        @keyframes bgPulse {
+            0% { background-scale: 1; background-position: center top; }
+            100% { background-position: center bottom; }
+        }
+
         .bg-text-animation {
             position: fixed;
-            top: 45%;
+            top: 25px;
             left: 0;
             width: 100%;
-            font-size: 5rem;
-            font-weight: 800;
+            font-size: 1.1rem;
+            font-weight: 600;
             text-transform: uppercase;
-            color: var(--anim-text-color);
+            color: rgba(255, 255, 255, 0.12);
             white-space: nowrap;
             pointer-events: none;
             z-index: 0;
             user-select: none;
             animation: textScroll 30s linear infinite;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
         @keyframes textScroll {
@@ -86,33 +81,9 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* ✨ மின்னுவது போன்ற நட்சத்திர பின்னணி */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(#fff 1px, transparent 1px);
-            background-size: 50px 50px;
-            opacity: 0.05;
-            z-index: 0;
-            pointer-events: none;
-            animation: twinkle 4s infinite alternate;
-        }
-
-        @keyframes twinkle {
-            0% { opacity: 0.03; }
-            100% { opacity: 0.08; }
-        }
-
         .container { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
 
-        .theme-switcher {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
+        .theme-switcher { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
 
         .theme-btn {
             padding: 8px 14px;
@@ -124,15 +95,11 @@
             font-size: 0.85rem;
             font-family: inherit;
             transition: all 0.2s;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
-        .theme-btn:hover {
-            border-color: var(--accent-color);
-            transform: scale(1.05);
-            box-shadow: 0 0 10px var(--accent-color);
-        }
+        .theme-btn:hover { border-color: var(--accent-color); transform: scale(1.05); }
 
         header {
             text-align: center;
@@ -141,9 +108,9 @@
             border-radius: 12px;
             margin-bottom: 40px;
             border: 1px solid var(--border-glow);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         header h1 { margin: 0; font-size: 2.3rem; font-weight: 700; color: #ffffff; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
@@ -155,15 +122,14 @@
             margin: 35px 0 20px 0;
             padding-left: 12px;
             border-left: 4px solid var(--accent-color);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 
-        /* ⚡ கார்டுகளுக்கான 3D Hover & Glow Effects */
         .card {
             background-color: var(--card-bg);
-            padding: 20px;
+            padding: 22px;
             border-radius: 12px;
             text-decoration: none;
             color: inherit;
@@ -172,40 +138,40 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .card:hover {
             transform: translateY(-6px) scale(1.02);
             border-color: var(--accent-color);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(59, 130, 246, 0.3);
-            background-color: rgba(30, 41, 59, 0.8);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(59, 130, 246, 0.3);
+            background-color: rgba(15, 23, 42, 0.85);
         }
 
         .icon-box {
-            width: 46px;
-            height: 46px;
+            width: 48px;
+            height: 48px;
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            background-color: rgba(255, 255, 255, 0.06);
+            font-size: 1.6rem;
+            background-color: rgba(255, 255, 255, 0.08);
             flex-shrink: 0;
             transition: transform 0.3s ease;
         }
 
         .card:hover .icon-box { transform: rotate(10deg) scale(1.1); }
         .card-info { display: flex; flex-direction: column; }
-        .card h3 { margin: 0; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.3px; line-height: 1.3; }
-        .card p { margin: 5px 0 0 0; font-size: 0.85rem; color: var(--text-muted); line-height: 1.3; }
+        .card h3 { margin: 0; font-size: 1.12rem; font-weight: 600; letter-spacing: 0.3px; line-height: 1.3; }
+        .card p { margin: 5px 0 0 0; font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
         footer { text-align: center; margin-top: 60px; padding: 20px; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border-glow); }
     </style>
 </head>
 <body>
 
-<!-- 🏛️ பின்னணி அனிமேஷன் உரை -->
 <div class="bg-text-animation">
     Tamil Nadu Government Rural Development and Panchayat Raj &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tamil Nadu Government Rural Development and Panchayat Raj
 </div>
@@ -222,53 +188,69 @@
         <h1>கலசபாக்கம் வட்டாரம்</h1>
     </header>
 
-    <!-- பிரிவு 1 -->
-    <div class="section-title">🔑 முக்கிய இணையதளங்கள் & லாகின்கள்</div>
+    <div class="section-title">🔑 முக்கிய லாகின் போர்ட்டல்கள்</div>
     <div class="grid">
         <a href="https://tn.gov.in" target="_blank" class="card">
             <div class="icon-box">🌐</div>
             <div class="card-info">
-                <h3>TNRD Site</h3>
-                <p>அதிகாரப்பூர்வ துறை போர்டல்</p>
+                <h3>TNRD Official Site</h3>
+                <p>ஊரக வளர்ச்சி மற்றும் ஊராட்சித் துறை தளம்</p>
             </div>
         </a>
         <a href="https://tn.gov.in" target="_blank" class="card">
             <div class="icon-box">🏡</div>
             <div class="card-info">
                 <h3>VP TAX Portal</h3>
-                <p>சொத்து வரி மற்றும் சேவைகள்</p>
+                <p>ஊராட்சி சொத்து வரி மற்றும் சேவைகள்</p>
             </div>
         </a>
         <a href="https://egramswaraj.gov.in" target="_blank" class="card">
             <div class="icon-box">🏛️</div>
             <div class="card-info">
                 <h3>E-Gramswaraj</h3>
-                <p>மத்திய அரசு கிராம கணக்கு தளம்</p>
+                <p>மத்திய அரசு கிராம கணக்கு போர்டல்</p>
             </div>
         </a>
         <a href="https://indianbank.bank.in" target="_blank" class="card">
             <div class="icon-box">💳</div>
             <div class="card-info">
                 <h3>TN PASS Login</h3>
-                <p>Indian Bank TNDRD போர்டல்</p>
+                <p>Indian Bank TNDRD-PRI போர்டல்</p>
             </div>
         </a>
     </div>
 
-    <!-- பிரிவு 2 -->
-    <div class="section-title">📊 கணக்குகள் & பாஸ்வேர்டு விபரங்கள் (Google Sheets)</div>
+    <div class="section-title">📊 கணக்குகள் & பயனர் நற்சான்றிதழ்கள் (Spreadsheet Tabs)</div>
     <div class="grid">
-        <a href="https://docs.google.com/spreadsheets/d/1AvgGkdtiS1tyyBJhX9MJOtdhOLWdpxZEwzosQW5hzt4/edit#gid=0" target="_blank" class="card">
+        <a href="https://google.com" target="_blank" class="card">
             <div class="icon-box">🔐</div>
             <div class="card-info">
-                <h3>Master Sheet Dashboard</h3>
-                <p>அனைத்து 31 தாள்களின் முதன்மைப் பக்கம்</p>
+                <h3>1. GST User & Pass</h3>
+                <p>Village Panchayat Details</p>
             </div>
         </a>
         <a href="https://google.com" target="_blank" class="card">
-            <div class="icon-box">📝</div>
+            <div class="icon-box">💡</div>
             <div class="card-info">
-                <h3>GST User & Pass</h3>
-                <p>Village Panchayat Accounts (Tab 1)</p>
+                <h3>2. EB Connection List</h3>
+                <p>Tiruvannamalai TANGECO Data</p>
             </div>
         </a>
+        <a href="https://google.com" target="_blank" class="card">
+            <div class="icon-box">💧</div>
+            <div class="card-info">
+                <h3>3. Water Supply Status</h3>
+                <p>Habitation-wise Details (No 178)</p>
+            </div>
+        </a>
+        <a href="https://google.com" target="_blank" class="card">
+            <div class="icon-box">🛡️</div>
+            <div class="card-info">
+                <h3>4. E-Gramswaraj Login</h3>
+                <p>Block User & Password Sheet</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="section-title">🏗️ நிதி & குடிநீர் தட்டுப்பாடு கண்காணிப்பு</div>
+    <div class="grid">
